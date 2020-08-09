@@ -24,6 +24,7 @@ class CreateEventosTable extends Migration
             $table->string('edad');
             $table->string('ocupacion');
             $table->string('observacion');
+            $table->string('fecha');
             $table->timestamps();
         });
     }

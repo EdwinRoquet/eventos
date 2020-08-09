@@ -30,6 +30,7 @@
                           <th scope="col">Edad</th>
                           <th scope="col">Ocupacion</th>
                           <th scope="col">Observacion</th>
+                          <th scope="col">Fecha del evento</th>
                           <th scope="col">Fecha de Creación</th>
                           <th scope="col">Acciones</th>
                         </tr>
@@ -47,6 +48,7 @@
                             <td>{{$evento->edad}}</td>
                             <td>{{$evento->ocupacion}}</td>
                             <td>{{$evento->observacion}}</td>
+                            <td>{{$evento->fecha}}</td>
                             <td>{{$evento->created_at}}</td>
                             <td>
                                 <form method="POST"  role="form" action="{{ route('evento.destroy' , $evento) }}" >

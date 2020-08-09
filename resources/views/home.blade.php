@@ -19,6 +19,8 @@
                         </div>
                       </div>
                       <div class="card-body">
+
+                <div class="table-responsive">
                         <figure class="highcharts-figure">
                             <div id="container"></div>
                             <p class="highcharts-description">
@@ -31,6 +33,7 @@
                                   <th>Actividades</th>
                                   <th>Masculino</th>
                                   <th>Femenino</th>
+                                  <th>Total Niños</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -39,6 +42,7 @@
                                   <td>{{$key}} </td>
                                   <td>{{$item['Masculino']}} </td>
                                   <td>{{$item['Femenino'] }} </td>
+                                  <td>{{$item['Niños'] }} </td>
                                </tr>
 
                                 @endforeach
@@ -47,7 +51,10 @@
                             </table>
                           </figure>
 
-                      </div>
+
+                </div>
+
+                        </div>
                     </div>
                   </div>
             </div>

@@ -27,6 +27,7 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
             'Edad',
             'Ocupacion',
             'Observacion',
+            'Fecha del Evento',
             'Fecha de creación',
         ];
     }
@@ -46,6 +47,7 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
             $evento->edad,
             $evento->ocupacion,
             $evento->observacion,
+            $evento->fecha,
             $evento->created_at
         ];
     }

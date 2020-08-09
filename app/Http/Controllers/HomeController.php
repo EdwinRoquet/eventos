@@ -38,6 +38,8 @@ class HomeController extends Controller
                       'Femenino'  => $item->where('genero', 'Femenino')
                                           ->count(),
                       'Masculino' => $item->where('genero', 'Masculino')
+                                            ->count(),
+                      'Niños' => $item->where('edad', '6 a 12 años')
                                           ->count(),
                   ]
               ];

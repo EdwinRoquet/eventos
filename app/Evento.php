@@ -8,7 +8,7 @@ class Evento extends Model
 {
 
     protected $fillable = [
-        'num_evento', 'institucion', 'distrito','actividad_id','user_id','genero','edad','ocupacion','observacion',
+        'num_evento', 'institucion', 'distrito','actividad_id','user_id','genero','edad','ocupacion','observacion','fecha'
     ];
 
     //Obtiene la actividad en eventos via FK

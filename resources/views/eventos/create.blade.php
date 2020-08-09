@@ -98,16 +98,28 @@
                                  class="form-control @error('ocupacion') is-invalid @enderror"
                                  id="distrito">
                                  <option value=""> --Seleccione-- </option>
-                                 <option value="3 a 6 años"> Estudiantes </option>
-                                 <option value="6 a 12 años"> Académicos </option>
-                                 <option value="12 a 18 años"> Funcionarios </option>
-                                 <option value="18 a 24 años"> Otros </option>
+                                 <option value="Estudiantes"> Estudiantes </option>
+                                 <option value="Academicos"> Académicos </option>
+                                 <option value="Funcionarios"> Funcionarios </option>
+                                 <option value="Otros"> Otros </option>
                          </select>
                     </div>
+
+
                     <div class="form-group">
                         <label for="observacion">Obersvaciones</label>
                         <textarea name="observacion"class="form-control" cols="30" rows="10"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha del evento</label>
+                        <div class="input-group input-group-alternative mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-key-25"></i></span>
+                          </div>
+                          <input class="form-control" placeholder="Fecha del Evento" type="date" name="fecha" value="{{ old('fecha') }}" required autofocus>
+                        </div>
+                      </div>
 
 
 

@@ -61,6 +61,7 @@ class EventoController extends Controller
             'edad'=>'required',
             'ocupacion'=>'required',
             'observacion'=>'required',
+            'fecha'=>'required',
         ]);
 
 
@@ -74,6 +75,7 @@ class EventoController extends Controller
           'edad'=>         $data['edad'],
           'ocupacion'=>    $data['ocupacion'],
           'observacion' => $data['observacion'],
+          'fecha' =>       $data['fecha'],
         ]);
 
         //Redireccionar
