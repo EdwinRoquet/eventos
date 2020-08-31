@@ -13,18 +13,26 @@ class CreateEventosTable extends Migration
      */
     public function up()
     {
+
+
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
             $table->string('num_evento');
             $table->string('institucion');
             $table->string('distrito');
             $table->foreignId('actividad_id')->references('id')->on('actividads')->comment('Actividades aninadas al evento');
-            $table->foreignId('user_id')->references('id')->on('users')->comment('Usuario que asiste a un evento');
+            $table->string('observacion');
+            $table->string('fecha');
+            $table->timestamps();
+        });
+
+        Schema::create('asistentes', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
             $table->string('genero');
             $table->string('edad');
             $table->string('ocupacion');
-            $table->string('observacion');
-            $table->string('fecha');
+            $table->string('evento_id')->constrained();
             $table->timestamps();
         });
     }
@@ -37,5 +45,7 @@ class CreateEventosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('eventos');
+        Schema::dropIfExists('asistentes');
+
     }
 }

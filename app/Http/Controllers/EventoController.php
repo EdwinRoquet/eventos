@@ -57,26 +57,15 @@ class EventoController extends Controller
             'institucion'=>'required',
             'distrito'=>'required',
             'actividad_id'=>'required',
-            'genero'=>'required',
-            'edad'=>'required',
-            'ocupacion'=>'required',
             'observacion'=>'required',
             'fecha'=>'required',
         ]);
 
 
         //almacenar en la base de datos con modelo
-        auth()->user()->eventos()->create([
-          'num_evento' =>  $data['num_evento'],
-          'institucion'=>  $data['institucion'],
-          'distrito'=>     $data['distrito'],
-          'actividad_id'=> $data['actividad_id'],
-          'genero'=>       $data['genero'],
-          'edad'=>         $data['edad'],
-          'ocupacion'=>    $data['ocupacion'],
-          'observacion' => $data['observacion'],
-          'fecha' =>       $data['fecha'],
-        ]);
+        $evento  = new Evento ($data);
+        $evento->save();
+
 
         //Redireccionar
         return redirect()->action('EventoController@index');

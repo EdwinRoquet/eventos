@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Asistente;
 use App\Evento;
 use Illuminate\Support\Facades\Date;
 use Maatwebsite\Excel\Concerns\FromQuery;
@@ -22,11 +23,10 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
             'Actividad',
             'Distrito',
             'Institucion',
-            'Nombre',
-            'Genero',
-            'Edad',
-            'Ocupacion',
             'Observacion',
+            'Total de Asistentes',
+            'Niñas',
+            'Niños',
             'Fecha del Evento',
             'Fecha de creación',
         ];
@@ -35,18 +35,19 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
     {
         return Evento::all();
     }
-    public function map( $evento): array
+    public function map($evento): array
     {
+
+
         return [
             $evento->num_evento,
             $evento->actividad->nombre,
             $evento->distrito,
             $evento->institucion,
-            $evento->autor->name,
-            $evento->genero,
-            $evento->edad,
-            $evento->ocupacion,
             $evento->observacion,
+            $evento->asistentes->count(),
+            $evento->asistentes->where('genero', 'f')->count(),
+            $evento->asistentes->where('genero', 'm')->count(),
             $evento->fecha,
             $evento->created_at
         ];

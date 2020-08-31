@@ -25,31 +25,50 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index( )
     {
 
-        $actividades = Actividad::all();
+         $eventos = Evento::all();
+    //     $actividades = Actividad::all();
 
-       $eventos = Evento::all()
-          ->groupBy('actividad_id')
-          ->map(function ($item) {
-              return [
-                  $item->first()->actividad->nombre => [
-                      'Femenino'  => $item->where('genero', 'Femenino')
-                                          ->count(),
-                      'Masculino' => $item->where('genero', 'Masculino')
-                                            ->count(),
-                      'Niños' => $item->where('edad', '6 a 12 años')
-                                          ->count(),
-                  ]
-              ];
-          })
-          ->collapse();
+    //    $eventos = Evento::all()
+    //       ->groupBy('actividad_id')
+    //       ->map(function ($item) {
+    //           return [
+    //               $item->first()->actividad->nombre => [
+    //                   'Femenino'  => $item->where('genero', 'Femenino')
+    //                                       ->count(),
+    //                   'Masculino' => $item->where('genero', 'Masculino')
+    //                                         ->count(),
+    //                   'Niños' => $item->where('edad', '6 a 12 años')
+    //                                       ->count(),
+    //               ]
+    //           ];
+    //       })
+    //       ->collapse();
 
 
+          return view('home', compact('eventos'));
+
+    }
+
+     public function grafica(Request $request)
+    {
+
+        $id_evento = $request->route('id');
+        //Obtener los candidatos y la vacante
+        $evento = Evento::findOrFail( $id_evento);
 
 
-          return view('home')->with('eventos', $eventos)->with('actividades', $actividades);
+       $arregloEvento = [
+           'nombre' => $evento->actividad->nombre,
+           'total'  => $evento->asistentes->count(),
+           'niños'  => $evento->asistentes->where('genero', 'm')->count(),
+           'niñas'  => $evento->asistentes->where('genero', 'f')->count(),
+       ];
 
+    //   dd($arregloEvento);
+
+        return  response()->json(['respuesta' => $arregloEvento]);
     }
 }

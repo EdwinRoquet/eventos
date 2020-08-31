@@ -12,8 +12,9 @@
             <div class="card-body">
 
             <a href="{{ route('evento.create') }}" class="btn btn-secondary mb-3"> Agregar Evento</a>
+            <a href="{{ route('asistente.create') }}" class="btn btn-outline-warning mb-3"> Agregar Asistente</a>
 
-            <a class="btn btn-success text-white mb-3" href="{{ route('evento.excel') }}">Descargar Excel</a>
+            <a class="btn btn-outline-success  mb-3" href="{{ route('evento.excel') }}">Descargar Excel</a>
             <button class="btn btn-outline-info mb-3">Total:{{$totalRegistro}}</button>
 
                 <div class="table-responsive">
@@ -25,11 +26,11 @@
                           <th scope="col">Actividad</th>
                           <th scope="col">Distrito</th>
                           <th scope="col">Institución</th>
-                          <th scope="col">Nombre</th>
-                          <th scope="col">Genero</th>
-                          <th scope="col">Edad</th>
-                          <th scope="col">Ocupacion</th>
                           <th scope="col">Observacion</th>
+                          <th scope="col">Asistentes</th>
+                          <th scope="col">Niñas</th>
+                          <th scope="col">Niños</th>
+
                           <th scope="col">Fecha del evento</th>
                           <th scope="col">Fecha de Creación</th>
                           <th scope="col">Acciones</th>
@@ -43,11 +44,13 @@
                           <td>{{$evento->actividad->nombre}}</td>
                             <td>{{$evento->distrito}}</td>
                             <td>{{$evento->institucion}}</td>
-                            <td>{{$evento->autor->name}}</td>
-                            <td>{{$evento->genero}}</td>
-                            <td>{{$evento->edad}}</td>
-                            <td>{{$evento->ocupacion}}</td>
                             <td>{{$evento->observacion}}</td>
+                            <td>Total: {{$evento->asistentes->count()}}
+                            <a href="{{route('asistente.index',['id' => $evento->id])}}">Asistentes</a>
+                            </td>
+                            <td>Niñas: {{$evento->asistentes->where('genero', 'f')->count(),  }}</td>
+                             <td> Niños: {{$evento->asistentes->where('genero', 'm')->count(),  }}</td>
+
                             <td>{{$evento->fecha}}</td>
                             <td>{{$evento->created_at}}</td>
                             <td>
