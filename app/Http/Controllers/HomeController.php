@@ -62,9 +62,9 @@ class HomeController extends Controller
 
        $arregloEvento = [
            'nombre' => $evento->actividad->nombre,
-           'total'  => $evento->asistentes->count(),
-           'niños'  => $evento->asistentes->where('genero', 'm')->count(),
-           'niñas'  => $evento->asistentes->where('genero', 'f')->count(),
+           'total'  => $evento->femenino + $evento->masculino,
+           'niños'  => $evento->masculino,
+           'niñas'  => $evento->femenino,
        ];
 
     //   dd($arregloEvento);

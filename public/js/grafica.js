@@ -49,11 +49,11 @@
     },
     series: [{
         name: 'Niñas',
-        data: [myJson.respuesta.niñas]
+        data: [parseInt(myJson.respuesta.niñas)]
 
     }, {
         name: 'Niños',
-        data: [myJson.respuesta.niños]
+        data: [parseInt(myJson.respuesta.niños)]
 
     },{
     name:'Total',

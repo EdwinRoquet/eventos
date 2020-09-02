@@ -44,11 +44,6 @@ Route::get('/evento/create', 'EventoController@create')->name('evento.create');
 Route::post('/evento', 'EventoController@store')->name('evento.store');
 Route::delete('/evento/{evento}', 'EventoController@destroy')->name('evento.destroy');
 
-//Asistentes
-Route::get('/asistente/{id}', 'AsistenteController@index')->name('asistente.index');
-Route::get('/asistente', 'AsistenteController@create')->name('asistente.create');
-Route::post('/asistente', 'AsistenteController@store')->name('asistente.store');
-Route::delete('/asistente/{asistente}', 'AsistenteController@destroy')->name('asistente.destroy');
 
 Route::get('/evento/json', 'EventoController@datosJson');
 

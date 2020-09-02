@@ -57,6 +57,9 @@ class EventoController extends Controller
             'institucion'=>'required',
             'distrito'=>'required',
             'actividad_id'=>'required',
+            'femenino'=>'required',
+            'masculino'=>'required',
+            'nombre'=>'required',
             'observacion'=>'required',
             'fecha'=>'required',
         ]);

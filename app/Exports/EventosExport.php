@@ -27,6 +27,7 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
             'Total de Asistentes',
             'Niñas',
             'Niños',
+            'Nombre',
             'Fecha del Evento',
             'Fecha de creación',
         ];
@@ -45,9 +46,10 @@ class EventosExport implements FromCollection,WithHeadings,WithMapping
             $evento->distrito,
             $evento->institucion,
             $evento->observacion,
-            $evento->asistentes->count(),
-            $evento->asistentes->where('genero', 'f')->count(),
-            $evento->asistentes->where('genero', 'm')->count(),
+            $evento->femenino + $evento->masculino,
+            $evento->femenino,
+            $evento->masculino,
+            $evento->nombre,
             $evento->fecha,
             $evento->created_at
         ];

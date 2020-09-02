@@ -8,7 +8,7 @@ class Evento extends Model
 {
 
     protected $fillable = [
-        'num_evento', 'institucion', 'distrito','actividad_id','observacion','fecha'
+        'num_evento', 'institucion', 'distrito','actividad_id','femenino','masculino','nombre','observacion','fecha',
     ];
 
     //Obtiene la actividad en eventos via FK
@@ -18,11 +18,7 @@ class Evento extends Model
     }
 
 
-    //Obtiene la informacion del usuario via FK
-    public function asistentes()
-    {
-        return $this->hasMany(Asistente::class);
-    }
+
 
 
 }

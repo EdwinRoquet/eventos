@@ -21,20 +21,14 @@ class CreateEventosTable extends Migration
             $table->string('institucion');
             $table->string('distrito');
             $table->foreignId('actividad_id')->references('id')->on('actividads')->comment('Actividades aninadas al evento');
+            $table->string('femenino');
+            $table->string('masculino');
+            $table->string('nombre');
             $table->string('observacion');
             $table->string('fecha');
             $table->timestamps();
         });
 
-        Schema::create('asistentes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('genero');
-            $table->string('edad');
-            $table->string('ocupacion');
-            $table->string('evento_id')->constrained();
-            $table->timestamps();
-        });
     }
 
     /**
@@ -45,7 +39,6 @@ class CreateEventosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('eventos');
-        Schema::dropIfExists('asistentes');
 
     }
 }
